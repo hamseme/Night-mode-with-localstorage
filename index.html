@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <title> Night mode toggle</title>
+    </head>
+    <style>
+    body {
+    background-color: #ffffff;
+    color: #272727;
+}
+
+.night-mode body {
+    background-color: #272727;
+    color: #ffffff;
+}
+
+.night-mode a {
+    color: #e5e5e5;
+}</style>
+    <body>
+        <ul id="menu-primary">
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+          </ul>
+          
+          <p>Galleon quarter Pieces of Eight overhaul warp. Barbary Coast strike colors belay clap of thunder rutters. Gabion starboard hearties to go on account driver.</p>
+          
+          <p>Line sheet overhaul topsail furl. Gaff lugsail doubloon scurvy six pounders. Lateen sail starboard Privateer bounty piracy.</p>
+          
+          <p>Coxswain Buccaneer topsail rope's end pillage. Lugsail deadlights mizzen American Main Sea Legs. Hornswaggle rope's end square-rigged sheet scuppers.</p>
+          
+          <p>No prey, no pay Plate Fleet chase guns fire ship spanker. Booty warp lee jack fathom. Plate Fleet Admiral of the Black snow spirits Privateer.</p>
+          
+          <p>Gangplank wherry list scurvy main sheet. League gaff Blimey log jib. Reef crimp Jolly Roger tender maroon.</p>
+
+          <script>
+          ;(function (window, document, undefined) {
+	'use strict';
+	if (!('localStorage' in window)) return;
+	var nightMode = localStorage.getItem('gmtNightMode');
+	if (nightMode) {
+		document.documentElement.className += ' night-mode';
+	}
+})(window, document);
+
+
+;(function (window, document, undefined) {
+
+	'use strict';
+
+	// Feature test
+	if (!('localStorage' in window)) return;
+
+	// Get the navigation menu
+	var nav = document.querySelector('#menu-primary');
+	if (!nav) return;
+
+	// Insert the night mode toggle
+	nav.innerHTML += '<li id="night-mode"><a role="button" href="#">Toggle Night Mode</a></li>';
+
+	// Get our newly insert toggle
+	var nightMode = document.querySelector('#night-mode');
+	if (!nightMode) return;
+
+	// When clicked, toggle night mode on or off
+	nightMode.addEventListener('click', function (event) {
+		event.preventDefault();
+		document.documentElement.classList.toggle('night-mode');
+		if ( document.documentElement.classList.contains('night-mode') ) {
+			localStorage.setItem('gmtNightMode', true);
+			return;
+		}
+		localStorage.removeItem('gmtNightMode');
+	}, false);
+
+})(window, document);
+          </script>
+    </body>
+
+</html>
